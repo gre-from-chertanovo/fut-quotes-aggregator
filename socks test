@@ -1,0 +1,4 @@
+import requests
+
+proxies={'http':'socks5://144.76.60.196:1080'}
+resp = requests.get('https://api.telegram.org/bot543539841:AAHDUPtmz1UHkj4UX7GvtrZoxlmmHI1Us0M/', proxies)
