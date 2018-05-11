@@ -1,14 +1,21 @@
 import requests
 import time
+import socks
+import socket
+
+ip='167.99.139.100'
+port = 1080
+socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, ip, port)
+socket.socket = socks.socksocket
 
 url = "https://api.telegram.org/bot543539841:AAHDUPtmz1UHkj4UX7GvtrZoxlmmHI1Us0M/"
-proxiesDick = {'socks':'tglive:tglive1@socks5://socks5.gq:1080'}
+#proxiesDick = {'socks':'tglive:tglive1@socks5://socks5.gq:1080'}
 #proxiesDick = {'socks':'tglive:tglive1@91.211.247.111:1080'}
 #offset_param={'offset': '343103821'}
 
 
-def get_updates_json(request, params={'offset': '343103873'}):
-    response = requests.get(request + 'getUpdates', params, proxies=proxiesDick)
+def get_updates_json(request, params={'offset': '178787816'}):
+    response = requests.get(request + 'getUpdates', params)
     return response.json()
 
 
