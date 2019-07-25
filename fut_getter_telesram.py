@@ -42,9 +42,9 @@ update_id = last_update(get_updates_json(url))['update_id']
 okexUrl='https://www.okex.com/api/v1/future_ticker.do'
 deriUrl='https://www.deribit.com/api/v1/public/getsummary'
 btmxUrl='https://www.bitmex.com/api/v1/quote'
-deriSym = 'BTC-29JUN18'
-btmxSym = ['XBTM18', 'ETHM18', 'LTCM18', 'BCHM18', 'XRPM18']
-okexSym = ['btc_usd', 'eth_usd', 'ltc_usd', 'bch_usd', 'xrp_usd']
+deriSym = 'BTC-28DEC18'
+btmxSym = ['XBTZ18', 'ETHZ18', 'LTCZ18', 'BCHZ18', 'XRPZ18', 'EOSZ18']
+okexSym = ['btc_usd', 'eth_usd', 'ltc_usd', 'bch_usd', 'xrp_usd', 'eos_usd']
 
 def okexGet(okSym):
     okexMarkt=[]
@@ -62,12 +62,20 @@ def deriGet(derSym):
     deriMarkt.append(reqDeri.json()['result']['askPrice'])
     return(deriMarkt)
 
+#def btmxGet(btxSym):
+#    btmxMarkt = []
+#    btmxParams = {'symbol': btxSym, 'count':'1', 'reverse':'true'}
+#    reqBtmx = requests.get(btmxUrl, btmxParams)
+#    btmxMarkt.append(reqBtmx.json()[0]['bidPrice'])
+#    btmxMarkt.append(reqBtmx.json()[0]['askPrice'])
+#    return(btmxMarkt)
+
 def btmxGet(btxSym):
     btmxMarkt = []
-    btmxParams = {'symbol': btxSym, 'count':'1', 'reverse':'true'}
+    btmxParams = {'symbol': btxSym, 'depth':'1'}
     reqBtmx = requests.get(btmxUrl, btmxParams)
-    btmxMarkt.append(reqBtmx.json()[0]['bidPrice'])
-    btmxMarkt.append(reqBtmx.json()[0]['askPrice'])
+    btmxMarkt.append(reqBtmx.json()[1]['price'])
+    btmxMarkt.append(reqBtmx.json()[0]['price'])
     return(btmxMarkt)
 
 while True:

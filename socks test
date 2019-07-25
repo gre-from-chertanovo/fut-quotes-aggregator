@@ -1,0 +1,21 @@
+import requests
+import socks
+import socket
+
+#ip='167.99.139.100' #De
+ip='95.110.194.245' #Italy
+#port = 1080 # De
+port=21013 # Italy
+socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, ip, port)
+socket.socket = socks.socksocket
+url = 'https://api.telegram.org/bot543539841:AAHDUPtmz1UHkj4UX7GvtrZoxlmmHI1Us0M/getUpdates?offset=343103670'
+#print(requests.get(url).text)
+okexUrl='https://www.okex.com/api/v1/future_ticker.do'
+okexSym = ['btc_usd', 'eth_usd', 'ltc_usd', 'bch_usd', 'xrp_usd']
+okexParams = {'symbol': 'btc_usd', 'contract_type': 'quarter'}
+#print(requests.get(okexUrl, okexParams).text)
+#proxies={'socks':'socks5h://144.76.60.196:1080'}
+#resp = requests.get('https://api.telegram.org/bot543539841:AAHDUPtmz1UHkj4UX7GvtrZoxlmmHI1Us0M/getUpdates?offset=343103670', proxies)
+btmxUrl='https://www.bitmex.com/api/v1/quote'
+btmxParams = {'symbol': 'XBTM18', 'count':'1', 'reverse':'true'}
+print(requests.get(btmxUrl, btmxParams).text)
