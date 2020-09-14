@@ -12,4 +12,3 @@ def okexGet(okSym):
 print(okexGet('BTC-USD-201225'))
 
 
-#print(okexGet('btc_usd'))
